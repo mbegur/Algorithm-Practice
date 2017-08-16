@@ -13,8 +13,6 @@ class Node
   end
 
   def remove
-    # optional but useful, connects previous node to next node
-    # and removes self from list.
   end
 end
 

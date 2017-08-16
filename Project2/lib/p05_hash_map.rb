@@ -65,15 +65,16 @@ class HashMap
 
   def resize!
     old_store = @store
-   @store = Array.new(num_buckets * 2) { LinkedList.new }
-   @count = 0
+    @store = Array.new(num_buckets * 2) { LinkedList.new }
+    @count = 0
 
-   old_store.each do |link_list|
-     link_list.each do |node| set(node.key, node.val)
-     end
-   end
+    old_store.each do |link_list|
+      link_list.each do |node|
+        set(node.key, node.val)
+      end
+    end
 
-   #Why does this not work ???????????????????????????
+#Why does this not work ???????????????????????????
 
     # new_store = Array.new(num_buckets * 2) { LinkedList.new }
     # @count = 0
