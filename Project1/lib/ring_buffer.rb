@@ -36,7 +36,7 @@ class RingBuffer
 
     @length += 1
     self[@length - 1] = val
-    nil
+    
   end
 
   # O(1)

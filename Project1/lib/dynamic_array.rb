@@ -48,7 +48,7 @@ class DynamicArray
       i += 1
     end
     @length -= 1
-
+    shifted
 
   end
 
