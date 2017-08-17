@@ -15,8 +15,9 @@ class BinaryMinHeap
     if count == 1
       @store.pop
     else
+
       @store[0] = @store.pop
-      BinaryMinHeap.heapify_down(store, 0, &prc)
+      BinaryMinHeap.heapify_down(@store, 0, &prc)
     end
     root
 
