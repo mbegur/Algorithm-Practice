@@ -12,13 +12,13 @@ class BinaryMinHeap
 
   def extract
     root = @store[0]
-    if count == 1
-      @store.pop
-    else
+    # if count == 1
+    #   @store.pop
+    # else
 
       @store[0] = @store.pop
-      BinaryMinHeap.heapify_down(@store, 0, &prc)
-    end
+      BinaryMinHeap.heapify_down(@store, 0, &@prc)
+    # end
     root
 
 
@@ -39,10 +39,11 @@ class BinaryMinHeap
     double_index = parent_index * 2
     res << double_index + 1 if (double_index + 1) < len
     res << double_index + 2 if (double_index + 2) < len
-
     return nil if res.empty?
     res
   end
+
+
 
   def self.parent_index(child_index)
     raise 'root has no parent' if child_index == 0
