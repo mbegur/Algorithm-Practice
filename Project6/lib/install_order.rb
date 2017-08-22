@@ -16,7 +16,7 @@ def install_order(arr)
   arr.each do |el|
     vertices[el[0]] = Vertex.new(el[0]) unless vertices[el[0]]
     vertices[el[1]] = Vertex.new(el[1]) unless vertices[el[1]]
-    Edge.new(vertices[el[0]], vertices[el[1]])
+    Edge.new(vertices[el[1]], vertices[el[0]])
   end
 
   max_vert = vertices.keys.max
