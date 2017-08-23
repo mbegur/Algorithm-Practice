@@ -27,3 +27,10 @@ def install_order(arr)
 end
 
 p install_order([[3, 1], [2, 1], [6, 5], [3, 6], [3, 2], [4, 3], [9, 1]])
+
+def install_order2(arr)
+  vertices = {}
+  arr.each do |el|
+  end
+  
+end
