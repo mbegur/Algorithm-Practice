@@ -17,7 +17,6 @@ class LRUCache
   def get(key)
     if @map[key]
       node = @map[key]
-      node.remove
       node.val
     else
       val = @prc.call(key)
