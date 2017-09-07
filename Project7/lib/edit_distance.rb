@@ -26,13 +26,14 @@ def editDistance(str1, str2)
 
 end
 
-puts editDistance('geek', 'geessk')
+# puts editDistance('asdf', 'geessk')
 
 def ed(s, t)
   m = Array.new(s.length + 1) do |i|
     [i]
   end
   m[0] = (0...t.length + 1).to_a
+  p m
   (1..s.length).each do |i|
     (1..t.length).each do |j|
       if s[i - 1] == t[j - 1]
