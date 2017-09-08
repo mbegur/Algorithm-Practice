@@ -10,9 +10,13 @@ const fetchSearchResult = (text) => {
 
 class Search extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       searchParams: ""
     };
+    this.searchResults = this.searchResults.bind(this);
+    this.setSearchParams = this.setSearchParams.bind(this);
+
   }
 
   setSearchParams(e) {
@@ -22,15 +26,55 @@ class Search extends React.Component {
   }
 
   searchResults() {
+    if (this.state.searchParams === "") {
+      return [];
+    }
     let starWars = fetchSearchResult(this.state.searchParams);
     let allResults = starWars.results;
-    
+    let mappedResults;
+    if (allResults) {
+      mappedResults = allResults.map((result, idx) => {
+        return(
+          <li>
+          {result.name}
+          </li>
+        );
+      });
+    } else {
+      return null;
+    }
+  }
 
-
+  parseResults() {
+    if (!this.searchResults()) {
+      return (
+        <div></div>
+      );
+    } else {
+      return (
+        <div>
+          <ul>
+            {this.searchResults()}
+          </ul>
+        </div>
+      );
+    }
   }
 
   render() {
 
+    return(
+      <div>
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={this.setSearchParams}
+          value={this.state.searchParams}
+           >
+        </input>
+        {this.parseResults()}
+      </div>
+    );
   }
 }
 
