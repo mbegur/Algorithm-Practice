@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const fetchSearchResult = (text) => {
-  return fetch(`https://swapi.co/api/people/?search=${text}`)
-  .then(function(response) {
-    return response.json();
-  }).then(console.log);
-};
+
 
 class Search extends React.Component {
   constructor(props) {
@@ -14,7 +9,7 @@ class Search extends React.Component {
     this.state = {
       searchParams: ""
     };
-    this.searchResults = this.searchResults.bind(this);
+    this.fetchSearchResults = this.fetchSearchResults.bind(this);
     this.setSearchParams = this.setSearchParams.bind(this);
 
   }
@@ -25,41 +20,30 @@ class Search extends React.Component {
     });
   }
 
-  searchResults() {
-    if (this.state.searchParams === "") {
-      return [];
-    }
-    let starWars = fetchSearchResult(this.state.searchParams);
-    let allResults = starWars.results;
-    let mappedResults;
-    if (allResults) {
-      mappedResults = allResults.map((result, idx) => {
-        return(
-          <li>
-          {result.name}
-          </li>
-        );
+  fetchSearchResults() {
+
+      return fetch(`https://swapi.co/api/people/?search=${this.state.searchParams}`)
+      .then(function(response) {
+        return response.json();
+      }).then((response2) => {
+        this.searchResults(response2.results);
       });
-    } else {
-      return null;
-    }
+
   }
 
-  parseResults() {
-    if (!this.searchResults()) {
+  searchResults(response) {
+    let allResult = response.map((result, idx) => {
       return (
-        <div></div>
+        <li>
+          {result.name}
+        </li>
       );
-    } else {
-      return (
-        <div>
-          <ul>
-            {this.searchResults()}
-          </ul>
-        </div>
-      );
-    }
+    });
+    return(
+      <ul>allResult</ul>
+    );
   }
+
 
   render() {
 
@@ -72,7 +56,7 @@ class Search extends React.Component {
           value={this.state.searchParams}
            >
         </input>
-        {this.parseResults()}
+        {this.fetchSearchResults()}
       </div>
     );
   }

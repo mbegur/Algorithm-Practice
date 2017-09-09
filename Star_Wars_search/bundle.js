@@ -2094,12 +2094,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var fetchSearchResult = function fetchSearchResult(text) {
-  return fetch('https://swapi.co/api/people/?search=' + text).then(function (response) {
-    return response.json();
-  }).then(console.log);
-};
-
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
 
@@ -2111,7 +2105,7 @@ var Search = function (_React$Component) {
     _this.state = {
       searchParams: ""
     };
-    _this.searchResults = _this.searchResults.bind(_this);
+    _this.fetchSearchResults = _this.fetchSearchResults.bind(_this);
     _this.setSearchParams = _this.setSearchParams.bind(_this);
 
     return _this;
@@ -2125,42 +2119,31 @@ var Search = function (_React$Component) {
       });
     }
   }, {
-    key: 'searchResults',
-    value: function searchResults() {
-      if (this.state.searchParams === "") {
-        return [];
-      }
-      var starWars = fetchSearchResult(this.state.searchParams);
-      var allResults = starWars.results;
-      var mappedResults = void 0;
-      if (allResults) {
-        mappedResults = allResults.map(function (result, idx) {
-          return _react2.default.createElement(
-            'li',
-            null,
-            result.name
-          );
-        });
-      } else {
-        return null;
-      }
+    key: 'fetchSearchResults',
+    value: function fetchSearchResults() {
+      var _this2 = this;
+
+      return fetch('https://swapi.co/api/people/?search=' + this.state.searchParams).then(function (response) {
+        return response.json();
+      }).then(function (response2) {
+        _this2.searchResults(response2.results);
+      });
     }
   }, {
-    key: 'parseResults',
-    value: function parseResults() {
-      if (!this.searchResults()) {
-        return _react2.default.createElement('div', null);
-      } else {
+    key: 'searchResults',
+    value: function searchResults(response) {
+      var allResult = response.map(function (result, idx) {
         return _react2.default.createElement(
-          'div',
+          'li',
           null,
-          _react2.default.createElement(
-            'ul',
-            null,
-            this.searchResults()
-          )
+          result.name
         );
-      }
+      });
+      return _react2.default.createElement(
+        'ul',
+        null,
+        'allResult'
+      );
     }
   }, {
     key: 'render',
@@ -2175,7 +2158,7 @@ var Search = function (_React$Component) {
           onChange: this.setSearchParams,
           value: this.state.searchParams
         }),
-        this.parseResults()
+        this.fetchSearchResults()
       );
     }
   }]);
