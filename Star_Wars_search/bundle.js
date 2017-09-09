@@ -2158,7 +2158,7 @@ var Search = function (_React$Component) {
           onChange: this.setSearchParams,
           value: this.state.searchParams
         }),
-        this.fetchSearchResults()
+        this.fetchSearchResults
       );
     }
   }]);

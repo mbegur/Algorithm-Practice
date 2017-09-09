@@ -56,7 +56,7 @@ class Search extends React.Component {
           value={this.state.searchParams}
            >
         </input>
-        {this.fetchSearchResults()}
+        {this.fetchSearchResults}
       </div>
     );
   }
