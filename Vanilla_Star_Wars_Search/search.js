@@ -4,8 +4,9 @@ const suggestions = document.querySelector('.suggestions');
 
 const fetchSearchResult = () => {
   console.log(searchInput.value);
-  if (searchInput.value.length === 0) {
-    return parsedResults([]);
+  if (searchInput.value === "") {
+    parsedResults([]);
+    return;
   }
   return fetch(`https://swapi.co/api/people/?search=${searchInput.value}`)
     .then(response => response.json())
