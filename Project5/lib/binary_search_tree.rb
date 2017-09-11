@@ -95,6 +95,17 @@ class BinarySearchTree
     p arr
   end
 
+  def pre_order_traversal(tree_node = @root, arr = [])
+    return [] unless tree_node
+
+    arr << tree_node.value
+
+    arr.concat(in_order_traversal(tree_node.left)) if tree_node.left
+    arr.concat(in_order_traversal(tree_node.right)) if tree_node.right
+
+    p arr
+  end
+
 
   private
   # optional helper methods go here:
