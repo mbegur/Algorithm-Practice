@@ -5,6 +5,7 @@ const suggestions = document.querySelector('.suggestions');
 const fetchSearchResult = () => {
   console.log(searchInput.value);
   if (searchInput.value === "") {
+    fetch(`https://swapi.co/api/people/?search=`);
     parsedResults([]);
     return;
   }
@@ -21,7 +22,7 @@ const parsedResults = (array) => {
         ${element.name}
       </li>
     `;
-  });
+  }).join('');
   suggestions.innerHTML = html;
 };
 
