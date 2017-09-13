@@ -27,7 +27,8 @@ class Form extends React.Component {
         allPosts: this.parsePosts(res2)
       });
       console.log(this.state.allPosts);
-    });
+    })
+    .catch(err => console.log(err));
 
   }
 
@@ -84,7 +85,7 @@ class Form extends React.Component {
     if (this.state.allPosts.length > 0) {
       posts = allPosts.map((post, idx) => {
         return(
-          <li>
+          <li key={idx}>
           {post.score}
           <a href={post.link}>{post.title}</a>
         </li>
