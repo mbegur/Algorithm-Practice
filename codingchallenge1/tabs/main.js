@@ -1,13 +1,19 @@
-const header = document.querySelector(".header");
+const header = document.querySelectorAll(".header");
 const content = document.querySelectorAll(".content");
 
-header.onclick = (e) => {
-  console.log(content);
-  // e.preventDefault();
-  // if (content.style.display === "none") {
-  //   content.style.display === "block";
-  // } else {
-  //   content.style.display === "none";
-  // }
-  // return false;
+
+const hiddenOrNah = (element) => {
+  element.style.display === "none" ? element.style.display = "block" : element.style.display = "none";
 };
+
+header.forEach((element, idx) => {
+  // element.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   hiddenOrNah(content[idx]);
+  // });
+   element.onclick = (e) => {
+    e.preventDefault();
+    hiddenOrNah(content[idx]);
+  };
+  // };
+});
