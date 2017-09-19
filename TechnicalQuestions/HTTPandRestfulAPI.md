@@ -6,3 +6,11 @@ For example, when you enter a URL in your browser, this actually sends an HTTP c
 HTTP is a stateless protocol. This is because each command is executed independently, without knowledge of the commands that came before.
   - Main reason it is difficult to implement web sites that react intelligently to user input.
   - This is the addressed through the use of Javascript and cookies
+
+***HTTP Req/Res Cycle***
+1. User opens his browser, types in a url, and presses enter
+2. the browser make a request for that url
+3. the request hits the rails router(config/routes.rb), the router maps the url to the correct controller and action to handle the request
+4. the action receives the request and passes it on to the view
+5. the view renders the page as HTML
+6. the controller sends the HTMLS back to the browser and the page loads and the user sees it
