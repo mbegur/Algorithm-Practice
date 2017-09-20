@@ -14,3 +14,8 @@ HTTP is a stateless protocol. This is because each command is executed independe
 4. the action receives the request and passes it on to the view
 5. the view renders the page as HTML
 6. the controller sends the HTMLS back to the browser and the page loads and the user sees it
+
+**RESTful API**
+REST, or Representational State Transfer, is an architectural style for web services. A RESTful web service allows for access to web resources (documents, images, webpage, etc...) using standard HTTP operations (GET, POST, PATCH, DELETE)
+
+RESTful web services are stateless. It means each request/response cycle is independent of each other. Data can be cached on client side.
