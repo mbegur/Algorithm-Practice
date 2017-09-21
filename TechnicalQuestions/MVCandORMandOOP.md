@@ -24,3 +24,6 @@ Key ActiveRecord methods
   - .new ---> .save
   - .create
   - .destroy
+
+**OOP**
+Object Oriented Programming
