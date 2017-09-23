@@ -39,5 +39,4 @@ def reverse_string(str)
   return str[-1] + reverse_string(str[0..-2])
 end
 
-
 puts reverse_string("hello")
