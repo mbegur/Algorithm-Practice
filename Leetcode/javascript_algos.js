@@ -76,3 +76,17 @@ function merge(left, right) {
   }
   return sorted.concat(left, right);
 }
+
+const flatten = (arr) => {
+  let result = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'object') {
+      result = result.concat(flatten(arr[i]));
+    } else {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+};
+
+console.log(flatten([123,1234,[3452, 3245], 2345, [2345,2345,2345,223]]));
