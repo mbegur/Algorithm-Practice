@@ -26,4 +26,7 @@ Key ActiveRecord methods
   - .destroy
 
 **OOP**
-Object Oriented Programming
+***4 principles of OOP***
+1. Encapsulation: The internal representation of an object is generally hidden from the view outside of the object's definition. Only object's own methods can directly inspect or manipulate its fields.  
+
+2.
