@@ -11,10 +11,22 @@ const reverseString = (str) => {
     return str;
   }
   return str.slice(str.length - 1) + reverseString(str.slice(0, str.length - 1));
-
 };
 
 console.log(reverseString("12345"));
+
+const fib = (n) => {
+  if (n <= 0) {
+    return [0];
+  } else if (n === 1) {
+    return [0, 1];
+  } else {
+    let fibo = fib(n-1);
+    fibo.push(fibo[fibo.length - 1] + fibo[fibo.length - 2]);
+    return fibo;
+  }
+};
+console.log(fib(4));
 
 const twoSum = (arr, target) => {
   const hash = {};
@@ -78,10 +90,10 @@ function merge(left, right) {
 }
 
 const flatten = (arr) => {
-  let result = [];
+  const result = [];
   for (var i = 0; i < arr.length; i++) {
     if (typeof arr[i] === 'object') {
-      result = result.concat(flatten(arr[i]));
+      result +(flatten(arr[i]));
     } else {
       result.push(arr[i]);
     }
